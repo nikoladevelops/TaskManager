@@ -2,6 +2,7 @@
     padding:0;
     margin:0;
 }
+
 body{
     font-family: 'Lato', sans-serif;
 }
@@ -13,6 +14,7 @@ body{
     gap: 15px;
     margin-bottom:20px;
 }
+
 #navBar li{
     list-style-type: none;
     flex-basis: 10%;
@@ -29,10 +31,9 @@ body{
 
 #navBar a{
     text-decoration: none;
-    color:#F0EB8D;
+    color:#FFF;
     font-size:1.3em;
 }
-
 
 .container{
     display:flex;
@@ -49,40 +50,50 @@ body{
     min-width: 200px;
     margin-bottom: 5px;
 }
+
 .task-name{
     padding:25px;
 }
+
 .task-footer{
     background-color: black;
     padding: 10px;
 }
+
 .task-btns{
     padding:5px;
 }
+
 .task-btns button{
     padding:5px;
     margin:2px;
 }
+
 .editBtn{
     color:#FBFFB1;
     background-color: #2C3333;
     border:1px solid #4D455D;
 }
+
 .deleteBtn{
     color:#DF2E38;
     background-color: #2C3333;
     border: 1px solid #4D455D;
 }
+
 .task-btns button:hover{
     cursor: pointer;
     border: 1px solid #B3E5BE;
     transform: scale(1.05,1.05);
 }
+
 .completed{
     color:#B3E5BE;
     text-align: center;
 }
+
 .notCompleted{
-    color:red;
+    color:#DF2E38;
     text-align: center;
 }
+

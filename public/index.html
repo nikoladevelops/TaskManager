@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Manager</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
@@ -13,8 +14,29 @@
 <body>
     <nav id="navBar">
         <li><a href="/">All Tasks</a></li>
-        <li><a href="/create">Create</a></li>
+        <li id="createBtn"><a>Create</a></li>
     </nav>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Create Task</h2>
+        </div>
+        <div class="modal-body">
+            <div>
+                <input id="taskName" type="text" placeholder="Task name">
+            </div>
+            <div>
+                <label for="isCompleted">Completed</label>
+                <input type="checkbox" id="isCompleted" type="text">
+            </div>
+            <div>
+                <button id="submitBtn">Create</button>
+            </div>
+        </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="task">
@@ -48,6 +70,7 @@
     <input id="notCompleted" type="radio" value="false" checked="checked" name="isCompleted">
 
     
+    <script src="modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
 </body>
