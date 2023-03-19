@@ -13,8 +13,9 @@
 </head>
 <body>
     <nav id="navBar">
-        <li><a href="/">All Tasks</a></li>
+        <li id="allTasksBtn"><a href="/">All Tasks</a></li>
         <li id="createBtn"><a>Create</a></li>
+        <li id="refreshBtn"><a>Refresh</a></li>
     </nav>
 
     <div id="myModal" class="modal">
@@ -53,23 +54,6 @@
             </div>
         </div>
     </div>
-    
-    <br>
-
-    <h1>GET</h1>
-    <button id="getAllButton">GET REQUEST</button>
-    <textarea name="" id="getAllData" cols="30" rows="10"></textarea>
-
-
-    <h1>POST</h1>
-    <button id="postButton">POST REQUEST</button>
-    <input id="taskName" type="text">
-    <label for="completed">Completed</label>
-    <input id="completed" type="radio" value="true" name="isCompleted">
-    <label for="notCompleted">Not Completed</label>
-    <input id="notCompleted" type="radio" value="false" checked="checked" name="isCompleted">
-
-    
     <script src="modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>

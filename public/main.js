@@ -10,14 +10,16 @@ function getAllTasks(printTasks){
 
 
 // POST REQUEST
-function createTask(name, completed){
+function createTask(name, completed, printSingleTask){
     axios
     .post('http://localhost:3000/api/v1/tasks',
     {
         name,
         completed
     })
-    .then(res=>console.log(res))
+    .then(res=>{
+        printSingleTask(res)
+    })
     .catch(err=>console.log(err));
 }
 
@@ -81,13 +83,37 @@ function loadAllTasks(){
     })
 }
 
-//loadAllTasks();
 
-document.querySelector('#getAllButton').addEventListener('click', loadAllTasks);
+ document.querySelector("#allTasksBtn").addEventListener('click',()=>{
+    document.querySelector("#allTasksBtn a").click();
+});
 
-document.querySelector('#postButton').addEventListener('click', ()=>{
+document.querySelector('#refreshBtn').addEventListener('click',()=>{
+    document.querySelector(".container").replaceChildren();
+    
+    loadAllTasks();
+});
+
+document.querySelector('#getAllBtn').addEventListener('click', loadAllTasks);
+
+document.querySelector('#submitBtn').addEventListener('click', ()=>{
+    const taskName = document.querySelector('#taskName');
+    const isCompleted = document.querySelector('#isCompleted');
+
     createTask(
-        document.querySelector('#taskName').value,
-        document.querySelector('#completed').checked
+        taskName.value,
+        isCompleted.checked,
+        (res)=>{
+            const taskName = res.data.task.name;
+            const isCompleted = res.data.task.completed;
+            const taskId = res.data._id;
+
+            generateTaskHtmlElement(taskName,isCompleted,taskId);
+        }
     )
+    let modal = document.getElementById('myModal');
+    
+    taskName.value="";
+    isCompleted.checked=false;
+    modal.style.display = 'none';
 });
