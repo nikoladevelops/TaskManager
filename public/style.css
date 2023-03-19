@@ -1,0 +1,57 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+#navBar{
+    display:flex;
+    justify-content: center;
+    text-align: center;
+    gap: 15px;
+    margin-bottom:20px;
+}
+#navBar li{
+    list-style-type: none;
+    flex-basis: 30%;
+    background-color: #2D2727;
+    padding:15px;
+}
+#navBar a{
+    text-decoration: none;
+    color:#F0EB8D;
+    font-size:1.3em;
+}
+
+.container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.task{
+    background-color: #2D2727;
+    color:#FFF;
+    flex-basis: 27%;
+    text-align: center;
+    min-width: 200px;
+    margin-bottom: 5px;
+}
+.task-name{
+    padding:25px;
+}
+.task-footer{
+    background-color: black;
+    padding: 10px;
+}
+.task-btns{
+    padding:5px;
+}
+.completed{
+    color:#B3E5BE;
+    text-align: center;
+}
+.notCompleted{
+    color:red;
+    text-align: center;
+}

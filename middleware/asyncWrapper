@@ -1,0 +1,15 @@
+const asyncWrapper = (fn)=>{
+    return async (req,res,next)=>{
+        try {
+            await fn(req,res,next);
+        } catch (error) {
+            next(error);
+        }
+    }
+}
+
+// a function that gets another functuion as a parameter
+// returns an async (req,res,next) function that is used by express
+// runs the parameter fucntion in a try catch block and passes req,res,next to it
+
+module.exports=asyncWrapper;

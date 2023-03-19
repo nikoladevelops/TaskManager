@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav id="navBar">
+        <li><a href="/">All Tasks</a></li>
+        <li><a href="/create">Create</a></li>
+    </nav>
+
+    <div class="container">
+    </div>
+    
+    <br>
+
+    <h1>GET</h1>
+    <button id="getAllButton">GET REQUEST</button>
+    <textarea name="" id="getAllData" cols="30" rows="10"></textarea>
+
+
+    <h1>POST</h1>
+    <button id="postButton">POST REQUEST</button>
+    <input id="taskName" type="text">
+    <label for="completed">Completed</label>
+    <input id="completed" type="radio" value="true" name="isCompleted">
+    <label for="notCompleted">Not Completed</label>
+    <input id="notCompleted" type="radio" value="false" checked="checked" name="isCompleted">
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
