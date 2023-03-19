@@ -94,8 +94,6 @@ document.querySelector('#refreshBtn').addEventListener('click',()=>{
     loadAllTasks();
 });
 
-document.querySelector('#getAllBtn').addEventListener('click', loadAllTasks);
-
 document.querySelector('#submitBtn').addEventListener('click', ()=>{
     const taskName = document.querySelector('#taskName');
     const isCompleted = document.querySelector('#isCompleted');
