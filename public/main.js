@@ -8,7 +8,6 @@ function getAllTasks(printTasks){
     .catch(err=>console.log(err));
 }
 
-
 // POST REQUEST
 function createTask(name, completed, printSingleTask){
     axios
@@ -23,6 +22,22 @@ function createTask(name, completed, printSingleTask){
     .catch(err=>console.log(err));
 }
 
+// PATCH REQUEST
+function updateTask(taskId, name, completed, updateSingleTask){
+    axios
+    .patch(`http://localhost:3000/api/v1/tasks/${taskId}`,
+    {
+        name,
+        completed
+    }
+    .then(res=>{
+        updateSingleTask(res);
+    })
+    .catch(res=>console.log(res)));
+
+}
+
+// generate a single task html element
 function generateTaskHtmlElement(taskName, isCompleted, taskId){
     // task html elements
     const task = document.createElement("div");
@@ -62,6 +77,12 @@ function generateTaskHtmlElement(taskName, isCompleted, taskId){
     deleteBtn.innerText="DELETE";
     idSpan.innerText=taskId;
 
+    // button events
+    let editModal = document.querySelector(`#editModal`);
+    editBtn.onclick = function() {
+        editModal.style.display = "block";
+    }
+
     // correctly append each element to the parent
     task.appendChild(task_name);
     completed.appendChild(p);
@@ -75,6 +96,8 @@ function generateTaskHtmlElement(taskName, isCompleted, taskId){
     // add the new task element to the container
     document.querySelector(".container").appendChild(task);
 }
+
+// load all tasks and generate a task html element for each of them in the container div
 function loadAllTasks(){
     getAllTasks((res)=>{
         for (const task of res.data.tasks) {
@@ -84,34 +107,14 @@ function loadAllTasks(){
 }
 
 
+// make the whole li element clickable
  document.querySelector("#allTasksBtn").addEventListener('click',()=>{
     document.querySelector("#allTasksBtn a").click();
 });
 
+// remove all tasks from the container div and load them again
 document.querySelector('#refreshBtn').addEventListener('click',()=>{
     document.querySelector(".container").replaceChildren();
     
     loadAllTasks();
-});
-
-document.querySelector('#submitBtn').addEventListener('click', ()=>{
-    const taskName = document.querySelector('#taskName');
-    const isCompleted = document.querySelector('#isCompleted');
-
-    createTask(
-        taskName.value,
-        isCompleted.checked,
-        (res)=>{
-            const taskName = res.data.task.name;
-            const isCompleted = res.data.task.completed;
-            const taskId = res.data._id;
-
-            generateTaskHtmlElement(taskName,isCompleted,taskId);
-        }
-    )
-    let modal = document.getElementById('myModal');
-    
-    taskName.value="";
-    isCompleted.checked=false;
-    modal.style.display = 'none';
 });

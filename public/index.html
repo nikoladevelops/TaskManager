@@ -18,22 +18,43 @@
         <li id="refreshBtn"><a>Refresh</a></li>
     </nav>
 
-    <div id="myModal" class="modal">
+    <div id="createModal" class="modal">
         <div class="modal-content">
         <div class="modal-header">
             <span class="close">&times;</span>
-            <h2 id="modal-title">Create Task</h2>
+            <h2 class="modal-title">Create Task</h2>
         </div>
         <div class="modal-body">
             <div>
-                <input id="taskName" type="text" placeholder="Task name">
+                <input class="taskName" type="text" placeholder="Task name">
             </div>
             <div>
                 <label for="isCompleted">Completed</label>
-                <input type="checkbox" id="isCompleted" type="text">
+                <input type="checkbox" class="isCompleted" type="text">
             </div>
             <div>
-                <button id="submitBtn">Create</button>
+                <button class="submitBtn">Create</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2 class="modal-title">Edit Task</h2>
+        </div>
+        <div class="modal-body">
+            <div>
+                <input class="taskName" type="text" placeholder="Task name">
+            </div>
+            <div>
+                <label for="isCompleted">Completed</label>
+                <input type="checkbox" class="isCompleted" type="text">
+            </div>
+            <div>
+                <button class="submitBtn">Edit</button>
             </div>
         </div>
         </div>
@@ -54,8 +75,9 @@
             </div>
         </div>
     </div>
-    <script src="modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="main.js"></script>
+    <script src="modal.js"></script>
+    <script src="modalSetUp.js"></script>
 </body>
 </html>
