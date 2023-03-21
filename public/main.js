@@ -23,19 +23,21 @@ function createTask(name, completed, printSingleTask){
 }
 
 // PATCH REQUEST
-function updateTask(taskId, name, completed, updateSingleTask){
+function updateTask(taskId, name, completed, printSingleTask){
     axios
     .patch(`http://localhost:3000/api/v1/tasks/${taskId}`,
     {
         name,
         completed
-    }
-    .then(res=>{
-        updateSingleTask(res);
     })
-    .catch(res=>console.log(res)));
+    .then((res)=>{
+        printSingleTask(res);
+    })
+    .catch((res)=>console.log(res));
 
 }
+
+let nextTaskId = 0;
 
 // generate a single task html element
 function generateTaskHtmlElement(taskName, isCompleted, taskId){
@@ -62,13 +64,14 @@ function generateTaskHtmlElement(taskName, isCompleted, taskId){
         completed.classList.add("completed");
     }
     else{
-        completed.classList.add("notCompleted")
+        completed.classList.add("notCompleted");
     }
     task_btns.classList.add("task-btns");
     editBtn.classList.add("editBtn");
     deleteBtn.classList.add("deleteBtn");
     idSpan.classList.add("idHolder");
     idSpan.hidden=true;
+    editBtn.setAttribute("id",`task${nextTaskId}`);
 
     // populate data
     task_name.innerText = taskName;
@@ -79,9 +82,18 @@ function generateTaskHtmlElement(taskName, isCompleted, taskId){
 
     // button events
     let editModal = document.querySelector(`#editModal`);
-    editBtn.onclick = function() {
+    editBtn.addEventListener('click',(e)=>{
+        const modalTaskName = document.querySelector(`#editModal .taskName`);
+        const modalIsCompleted = document.querySelector(`#editModal .isCompleted`);
+        const idHolder = document.querySelector(`#editModal .idHolder`);
+        const htmlTaskIdToEdit = document.querySelector(`#editModal .htmlTaskIdToEdit`);
+
+        modalTaskName.value = taskName;
+        modalIsCompleted.checked = isCompleted;
+        idHolder.innerText = taskId;
+        htmlTaskIdToEdit.innerText=e.target.id; // give the id of the button that was clicked
         editModal.style.display = "block";
-    }
+    });
 
     // correctly append each element to the parent
     task.appendChild(task_name);
@@ -95,6 +107,7 @@ function generateTaskHtmlElement(taskName, isCompleted, taskId){
 
     // add the new task element to the container
     document.querySelector(".container").appendChild(task);
+    nextTaskId++;
 }
 
 // load all tasks and generate a task html element for each of them in the container div
