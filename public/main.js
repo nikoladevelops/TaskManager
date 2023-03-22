@@ -87,12 +87,23 @@ function generateTaskHtmlElement(taskName, isCompleted, taskId){
         const modalIsCompleted = document.querySelector(`#editModal .isCompleted`);
         const idHolder = document.querySelector(`#editModal .idHolder`);
         const htmlTaskIdToEdit = document.querySelector(`#editModal .htmlTaskIdToEdit`);
+        
+         const taskToEdit = document.querySelector(`#${e.target.id}`).parentNode.parentNode.parentNode;
+         const newModalTaskName = taskToEdit.querySelector(".task-name").innerText;
+         let newModalIsCompleted = taskToEdit.querySelector(".completed");
+         const newModalIdHolder = taskToEdit.querySelector(".idHolder").innerText;
 
-        modalTaskName.value = taskName;
-        modalIsCompleted.checked = isCompleted;
-        idHolder.innerText = taskId;
-        htmlTaskIdToEdit.innerText=e.target.id; // give the id of the button that was clicked
-        editModal.style.display = "block";
+         modalTaskName.value = newModalTaskName;
+         if(newModalIsCompleted)
+         {
+            modalIsCompleted.checked=true;
+         }
+         else{
+            modalIsCompleted.checked=false;
+         }
+         idHolder.innerText = newModalIdHolder;
+         htmlTaskIdToEdit.innerText=e.target.id; // give the id of the button that was clicked
+         editModal.style.display = "block";
     });
 
     // correctly append each element to the parent
