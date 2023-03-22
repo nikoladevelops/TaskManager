@@ -8,8 +8,7 @@ function createTaskAndLoadItsData(){
         (res)=>{
             const taskName = res.data.task.name;
             const isCompleted = res.data.task.completed;
-            const taskId = res.data._id;
-
+            const taskId = res.data.task._id;
             generateTaskHtmlElement(taskName,isCompleted,taskId);
         }
     )
