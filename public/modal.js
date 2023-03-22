@@ -14,20 +14,23 @@ class TaskModal{
   }
 
   configureModal(){
-  // Get the <span> element that closes the modal
+
+  // Get the <span> element that closes the modal.
   let span = document.querySelector(`#${this.modalDivId} .close`);
-  // When the user clicks on <span> (x), close the modal
+
+  // When the user clicks on <span> (x), close the modal.
   span.onclick = () => {
     this.modalDiv.style.display = "none";
   }
 
-  // When the user clicks anywhere outside of the modal, close it
+  // When the user clicks anywhere outside of the modal, close it.
   window.addEventListener('click', (e)=>{
     if (e.target == this.modalDiv) {
       this.modalDiv.style.display = "none";
     }
   });
-  
+
+  // Add the submitBtnFunc to the submit button click event / Execute submitBtnFunc when the submit button is clicked. 
   document.querySelector(`#${this.modalDivId} .submitBtn`).addEventListener('click', this.submitBtnFunc);
   }
 }

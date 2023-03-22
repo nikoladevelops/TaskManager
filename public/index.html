@@ -13,9 +13,7 @@
 </head>
 <body>
     <nav id="navBar">
-        <li id="allTasksBtn"><a href="/">All Tasks</a></li>
         <li id="createBtn"><a>Create</a></li>
-        <li id="refreshBtn"><a>Refresh</a></li>
     </nav>
 
     <div id="createModal" class="modal">
@@ -62,24 +60,36 @@
         <span class="htmlTaskIdToEdit" hidden></span>
     </div>
 
-    <div class="container">
-        <div class="task">
-            <h4 class="task-name">taskk</h4>
-            <div class="task-footer">
-                <div class="completed">
-                    <p>COMPLETED</p>
-                </div>
-                <div class="task-btns">
-                    <button class="editBtn">EDIT</button>
-                    <button class="deleteBtn">DELETE</button>
-                </div>
-                <span class="idHolder" hidden="">64117be48a9ced9f657e7b8e</span>
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2 class="modal-title">Delete Task</h2>
+        </div>
+        <div class="modal-body">
+            <div>
+                <label >Are you sure you want to delete this task?</label>
+            </div>
+            <div>
+                <button class="submitBtn">Delete</button>
+                <button class="cancelBtn">Cancel</button>
             </div>
         </div>
+        </div>
+        <span class="idHolder" hidden></span>
+        <span class="htmlTaskIdToDelete" hidden></span>
     </div>
+
+    <div class="container">
+        
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="main.js"></script>
+    <script src="requests.js"></script>
     <script src="modal.js"></script>
+    <script src="generateHTML.js"></script>
+    <script src="taskHTMLCRUD.js"></script>
     <script src="modalSetUp.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

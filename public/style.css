@@ -111,3 +111,17 @@ body{
 
 }
 
+.cancelBtn{
+    background-color: #2D2727;
+    padding:15px;
+    border: 1px solid transparent;
+    color:#FFF;
+}
+
+.cancelBtn:hover{
+    cursor: pointer;
+    border-bottom: 1px solid #DF2E38;
+    transform: scale(1.05,1.05);
+
+}
+
