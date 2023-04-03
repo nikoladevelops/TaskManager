@@ -1,11 +1,14 @@
 const express=require('express');
 const router = express.Router();
-
+const {getRegister,getLogin} = require('../controllers/users');
 // TODO
-router.route('/login')
-.get()
-.post();
-
 router.route('/register')
-.get()
-.post();
+.get(getRegister);
+
+router.route('/login')
+.get(getLogin)
+
+
+
+
+module.exports=router;

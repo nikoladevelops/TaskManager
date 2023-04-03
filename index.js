@@ -5,8 +5,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const tasks = require("./routes/tasks");
+const userRoutes = require('./routes/users');
+
 const connectDb = require("./db/connect");
 const errorHandlerMiddleware = require("./middleware/error-handler");
+const ejs = require('ejs');
+app.set('view engine','ejs');
+app.set('views','views');
 
 // needed for Login/Register functionality
 const session = require('express-session');
@@ -38,10 +43,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // routes
-app.use("/api/v1/tasks",tasks);
+app.use("/api/v1/tasks", tasks);
+app.use('/', userRoutes);
 
 app.get("/",(req,res)=>{
-    res.send("hello!");
+    res.render("index");
 });
 
 app.use(errorHandlerMiddleware);
