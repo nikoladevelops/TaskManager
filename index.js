@@ -23,6 +23,7 @@ const User = require('./models/User');
 // middleware
 app.use(express.static("./public"));
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 // session set up
 app.use(session({
@@ -46,7 +47,12 @@ passport.deserializeUser(User.deserializeUser());
 app.use("/api/v1/tasks", tasks);
 app.use('/', userRoutes);
 
-app.get("/",(req,res)=>{
+app.get("/",(req,res,next)=>{
+    if(!req.isAuthenticated()){
+        return res.send('Not authenticated, pelase login.');
+    }
+    return next();
+},(req,res)=>{
     res.render("index");
 });
 
