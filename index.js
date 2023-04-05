@@ -21,6 +21,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('./models/User');
 
 // middleware
+const {isLoggedIn} = require('./middleware/loginChecker')
 app.use(express.static("./public"));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -47,14 +48,13 @@ passport.deserializeUser(User.deserializeUser());
 app.use("/api/v1/tasks", tasks);
 app.use('/', userRoutes);
 
-app.get("/",(req,res,next)=>{
-    if(!req.isAuthenticated()){
-        return res.send('Not authenticated, pelase login.');
-    }
-    return next();
-},(req,res)=>{
+app.get("/", isLoggedIn, (req,res)=>{
     res.render("index");
 });
+
+app.get('*',(req,res)=>{
+    res.send('No such route exists.')
+})
 
 app.use(errorHandlerMiddleware);
 

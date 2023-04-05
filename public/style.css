@@ -5,6 +5,7 @@
 
 body{
     font-family: 'Lato', sans-serif;
+    background-color: #FDF4F5;
 }
 
 #navBar{
@@ -123,5 +124,18 @@ body{
     border-bottom: 1px solid #DF2E38;
     transform: scale(1.05,1.05);
 
+}
+
+.notLoggedInContainer{
+    display:flex;
+    justify-content: center;
+    background-color: #DAF5FF;
+    padding:50px;
+}
+#logo{
+    padding-bottom:30px;
+}
+.notLoggedInContainer h3{
+    padding-bottom:30px;
 }
 
