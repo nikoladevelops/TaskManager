@@ -1,3 +1,4 @@
+const { CustomAPIError } = require('../errors/custom-error');
 const User = require('../models/User');
 const passport = require('passport');
 
@@ -12,10 +13,12 @@ const getLogin = (req,res)=>{
 const postRegister = async (req,res,next)=>{
     try {
         // get the data that the user provides from req.body
-        const {username, password:plainTextPassword, email} = req.body;
+        const {username, password:plainTextPassword, repeatedPassword ,email} = req.body;
         
-        //TODO make sure password and repeated password matches before registering a new user
-
+        // make sure password and repeated password matches before registering a new user
+        if(plainTextPassword != repeatedPassword){
+            throw new CustomAPIError(`Password and Repeat password do NOT match.`, 403);
+        }
         // create a new User object
         const user = new User({
             email,
