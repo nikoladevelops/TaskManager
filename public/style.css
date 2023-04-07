@@ -178,4 +178,12 @@ body{
     padding:5px;
     width:200px;
 }
+.input-holder{
+    display:flex;
+    flex-direction: column;
+    padding:20px 50px 20px 50px;
+}
+.input-holder input{
+    margin: 5px;
+}
 
