@@ -132,19 +132,28 @@ body{
 .notLoggedInContainer{
     display:flex;
     justify-content: center;
-    background-color: #DAF5FF;
+    background-color: #2D2727;
     padding:50px;
+    color:#fff;
+    flex:1;
+    margin-bottom: 1px;
+    align-items: center;
+    font-size:1.2em;
+    text-align: center;
 }
 #logo{
-    padding:30px;
+    padding:10px 20px 10px 20px;
 }
 .notLoggedInContainer h3{
+    font-size:1.5em;
     padding-bottom:30px;
 }
 #mainFooter{
     text-align:center;
     padding:10px;
     margin-top:auto;
+    background-color: #2D2727;
+    color:#fff;
 }
 
 .user-data-form{
@@ -169,7 +178,7 @@ body{
 .user-data-form button{
     padding:10px 25px 10px 25px;
 }
-.user-data-form a{
+a{
     color:#C0DBEA;
 }
 .user-data-form input{
